@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ComputerPlayer } from '../computer-player';
 
 @Component({
   selector: 'app-game',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GameComponent implements OnInit {
 
-  constructor() { }
+  computerPlayers: ComputerPlayer[] = [{ id: 1, knownRiddles:[1] }];
+
+  constructor() {}
 
   ngOnInit(): void {
   }
