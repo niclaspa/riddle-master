@@ -1,0 +1,19 @@
+.player {
+    display: inline-block;
+    vertical-align: top;
+    width:50%;
+}
+
+.score {
+    font-size: 100px;
+    vertical-align: center;
+}
+
+.row {
+    background-color: white;
+}
+
+ul {
+    float: left;
+    list-style-type: none;
+}
