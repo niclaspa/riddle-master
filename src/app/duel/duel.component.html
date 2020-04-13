@@ -5,9 +5,10 @@
             <img src="https://api.adorable.io/avatars/200/williamp.png"/>
         </div>
         <div>
-            <ul>
-                <li>Riddle 1</li>
-                <li>Riddle 2</li>
+            <ul (click)="onClick($event)">
+                <li *ngFor="let riddle of riddles">
+                    {{riddle.question}}
+                </li>
             </ul>
         </div>
     </div>
@@ -25,4 +26,7 @@
             </div>
         </div>
     
+</div>
+<div>
+    {{this.currentRiddle.question}}
 </div>
