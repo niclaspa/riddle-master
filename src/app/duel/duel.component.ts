@@ -19,6 +19,6 @@ export class DuelComponent implements OnInit {
   }
 
   onClick(e) {
-    this.currentRiddle = this.riddles.find(r => r.question == e.target.innerHTML) ;
+    this.currentRiddle = this.riddles.find(r => r.question == e.target.innerHTML.trim()) ;
   }
 }
