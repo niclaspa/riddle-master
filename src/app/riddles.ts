@@ -11,4 +11,9 @@ export const RIDDLES: Riddle[] = [
     question: 'What goes round and round but never gets anywhere?', 
     answer: 'A clock' 
   },
+  { 
+    id: 3, 
+    question: 'How many seconds are there in a year?', 
+    answer: 'Twelve. January the second, February the second...' 
+  },
 ];
