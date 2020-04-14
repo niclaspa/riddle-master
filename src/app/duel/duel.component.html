@@ -13,19 +13,20 @@
         </div>      
         <h1>Hello there</h1>
     </div>
-    
 </div>
+
 <hr/>
+
 <div class="questions">
     <h3>Select a riddle:</h3>
     <div>
-            <ul (click)="onClick($event)">
-                <li *ngFor="let riddle of riddles">
-                    {{riddle.question}}
-                </li>
-            </ul>
-        </div>
+        <ul (click)="onClick($event)">
+            <li *ngFor="let riddle of riddles">
+                {{riddle.question}}
+            </li>
+        </ul>
     </div>
+</div>
 
 <div *ngIf="currentRiddle">
     {{this.currentRiddle.question}}
