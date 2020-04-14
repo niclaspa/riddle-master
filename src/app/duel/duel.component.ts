@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { RiddleService } from '../riddle.service';
 import { Riddle } from '../riddle';
+import { ComputerPlayer } from '../computer-player';
 
 @Component({
   selector: 'app-duel',
@@ -9,14 +10,18 @@ import { Riddle } from '../riddle';
 })
 export class DuelComponent implements OnInit {
 
+  @Input() opponent: ComputerPlayer;
+
   riddles: Riddle[];
   currentRiddle: Riddle;
   playerMessage: string;
+  opponentMessage: string;
 
   constructor(public riddleService: RiddleService) { }
 
   ngOnInit(): void {
     this.riddles = this.riddleService.getRiddles();
+    this.opponentMessage = 'Here\'s ' + this.opponent.name;
   }
 
   onClick(e) {

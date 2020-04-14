@@ -8,9 +8,19 @@ import { ComputerPlayer } from '../computer-player';
 })
 export class GameComponent implements OnInit {
 
-  computerPlayers: ComputerPlayer[] = [{ id: 1, knownRiddles:[1] }];
+  computerPlayers: ComputerPlayer[] = [
+    { 
+      id: 1, 
+      knownRiddles:[1],
+      name: 'Johnny' 
+    }
+  ];
 
-  constructor() {}
+  currentOpponent: ComputerPlayer;
+
+  constructor() {
+    this.currentOpponent = this.computerPlayers[0];
+  }
 
   ngOnInit(): void {
   }
