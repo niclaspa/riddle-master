@@ -11,6 +11,7 @@ export class DuelComponent implements OnInit {
 
   riddles: Riddle[];
   currentRiddle: Riddle;
+  playerMessage: string;
 
   constructor(public riddleService: RiddleService) { }
 
@@ -20,5 +21,6 @@ export class DuelComponent implements OnInit {
 
   onClick(e) {
     this.currentRiddle = this.riddles.find(r => r.question == e.target.innerHTML.trim()) ;
+    this.playerMessage = this.currentRiddle.question;
   }
 }
