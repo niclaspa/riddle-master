@@ -16,4 +16,9 @@ export const RIDDLES: Riddle[] = [
     question: 'How many seconds are there in a year?', 
     answer: 'Twelve. January the second, February the second...' 
   },
+  { 
+    id: 4, 
+    question: 'Where do fish keep their money?', 
+    answer: 'The riverbank' 
+  },
 ];
