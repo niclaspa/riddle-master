@@ -3,8 +3,8 @@ import { Riddle } from './riddle';
 export const RIDDLES: Riddle[] = [
   { 
     id: 1, 
-    question: 'What do I have in my pocket?', 
-    answer: 'A ring' 
+    question: 'What is the centre of gravity?', 
+    answer: 'v' 
   },
   { 
     id: 2, 
