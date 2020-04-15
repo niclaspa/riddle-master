@@ -21,4 +21,9 @@ export const RIDDLES: Riddle[] = [
     question: 'Where do fish keep their money?', 
     answer: 'The riverbank' 
   },
+  { 
+    id: 5, 
+    question: 'What`s a dragons favourite plane?', 
+    answer: 'The Spitfire' 
+  },
 ];
