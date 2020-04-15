@@ -21,11 +21,26 @@ export class DuelComponent implements OnInit {
 
   ngOnInit(): void {
     this.riddles = this.riddleService.getRiddles();
-    this.opponentMessage = 'Here\'s ' + this.opponent.name;
+    this.opponentSay('Here\'s ' + this.opponent.name);
   }
 
   onClick(e) {
     this.currentRiddle = this.riddles.find(r => r.question == e.target.innerHTML.trim()) ;
     this.playerMessage = this.currentRiddle.question;
+    
+    if (this.opponentKnowsAnswer(this.currentRiddle.id)) {
+      this.opponentSay(this.currentRiddle.answer);
+    } else {
+      this.opponentSay('No eyed deer!')
+    }
+
+  }
+
+  opponentKnowsAnswer(riddleId): boolean {
+    return this.opponent.knownRiddles.includes(riddleId);
+  }
+
+  opponentSay(text): void {
+    this.opponentMessage = text;
   }
 }

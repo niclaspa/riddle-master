@@ -11,7 +11,7 @@ export class GameComponent implements OnInit {
   computerPlayers: ComputerPlayer[] = [
     { 
       id: 1, 
-      knownRiddles:[1],
+      knownRiddles:[1,3],
       name: 'Johnny' 
     }
   ];
