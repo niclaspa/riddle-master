@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ComputerPlayer } from '../computer-player';
+import { Player } from '../player';
 
 @Component({
   selector: 'app-game',
@@ -15,6 +16,11 @@ export class GameComponent implements OnInit {
       name: 'Johnny' 
     }
   ];
+
+  player: Player = {
+    knownRiddles:[2,3],
+    name: 'Peter'  
+  };
 
   currentOpponent: ComputerPlayer;
 
