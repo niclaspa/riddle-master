@@ -34,6 +34,9 @@ export class DuelComponent implements OnInit {
       this.opponentSay('No eyed deer!')
     }
 
+    var riddleIdToAsk = this.getRandomOpponentRiddleId();
+    var riddleToAsk = this.lookupRiddle(riddleIdToAsk);       
+    this.opponentSay(riddleToAsk.question);
   }
 
   opponentKnowsAnswer(riddleId): boolean {
@@ -42,5 +45,14 @@ export class DuelComponent implements OnInit {
 
   opponentSay(text): void {
     this.opponentMessage = text;
+  }
+
+  lookupRiddle(id): Riddle {
+    return this.riddles.find(r => r.id == id);
+  }
+
+  getRandomOpponentRiddleId(): number {
+    var r = Math.floor((Math.random() * 3));
+    return this.opponent.knownRiddles[r];
   }
 }
