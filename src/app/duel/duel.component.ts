@@ -40,9 +40,12 @@ export class DuelComponent implements OnInit {
       // the player has just clicked on a question
       this.currentAskedRiddle = this.riddles.find(r => r.question == selectedOption);
       this.playerAskQuestion();
+      this.opponentSay('Thinking...');
+      await delay(2000);
       this.opponentAnswer();
       await delay(2000);
       this.opponentAskQuestion();
+      this.playerSay('');
       this.showAnswers();
       this.isPlayerTurnToAskQuestion = false;
     } else {
@@ -76,6 +79,7 @@ export class DuelComponent implements OnInit {
     var riddleIdToAsk = this.getRandomOpponentRiddleId();
     var riddleToAsk = this.lookupRiddle(riddleIdToAsk);       
     this.opponentSay(riddleToAsk.question);
+    this.currentAskedRiddle = riddleToAsk;
   }
 
   delay(ms: number) {
