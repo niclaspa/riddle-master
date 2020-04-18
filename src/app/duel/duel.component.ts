@@ -26,6 +26,11 @@ export class DuelComponent implements OnInit {
 
   onClick(e) {
     this.currentRiddle = this.riddles.find(r => r.question == e.target.innerHTML.trim()) ;
+    this.playerTurn();
+    this.opponentTurn();
+  }
+
+  playerTurn(): void {
     this.playerMessage = this.currentRiddle.question;
     
     if (this.opponentKnowsAnswer(this.currentRiddle.id)) {
@@ -33,10 +38,14 @@ export class DuelComponent implements OnInit {
     } else {
       this.opponentSay('No eyed deer!')
     }
+    
+  }
 
+  opponentTurn(): void {
     var riddleIdToAsk = this.getRandomOpponentRiddleId();
     var riddleToAsk = this.lookupRiddle(riddleIdToAsk);       
     this.opponentSay(riddleToAsk.question);
+    
   }
 
   opponentKnowsAnswer(riddleId): boolean {
