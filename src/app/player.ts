@@ -1,4 +1,5 @@
 export class Player {
-  knownRiddles: number[];
+  knownQuestions: number[];
+  knownAnswers: number[];
   name: string;
 }

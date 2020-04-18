@@ -101,7 +101,7 @@ export class DuelComponent implements OnInit {
 
   showAnswers(): void {
     var that = this;
-    this.options = this.player.knownRiddles.map(function(r) { return that.lookupRiddle(r).answer });
+    this.options = this.player.knownAnswers.map(function(r) { return that.lookupRiddle(r).answer });
   }
 
   opponentKnowsAnswer(riddleId): boolean {
