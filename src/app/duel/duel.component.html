@@ -18,11 +18,11 @@
 <hr/>
 
 <div class="questions">
-    <h3>Select a riddle:</h3>
+    <h3>Select an option:</h3>
     <div>
         <ul (click)="onClick($event)">
-            <li *ngFor="let riddle of riddles">
-                {{riddle.question}}
+            <li *ngFor="let option of options">
+                {{option}}
             </li>
         </ul>
     </div>

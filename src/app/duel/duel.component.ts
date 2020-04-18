@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { RiddleService } from '../riddle.service';
 import { Riddle } from '../riddle';
 import { ComputerPlayer } from '../computer-player';
+import { Player } from '../player';
 
 @Component({
   selector: 'app-duel',
@@ -11,17 +12,20 @@ import { ComputerPlayer } from '../computer-player';
 export class DuelComponent implements OnInit {
 
   @Input() opponent: ComputerPlayer;
+  @Input() player: Player;
 
   riddles: Riddle[];
   currentRiddle: Riddle;
   playerMessage: string;
   opponentMessage: string;
+  options: string[];
 
   constructor(public riddleService: RiddleService) { }
 
   ngOnInit(): void {
     this.riddles = this.riddleService.getRiddles();
     this.opponentSay('Here\'s ' + this.opponent.name);
+    this.showQuestions();
   }
 
   onClick(e) {
@@ -32,6 +36,7 @@ export class DuelComponent implements OnInit {
 
   playerTurn(): void {
     this.playerMessage = this.currentRiddle.question;
+    this.showQuestions();
     
     if (this.opponentKnowsAnswer(this.currentRiddle.id)) {
       this.opponentSay(this.currentRiddle.answer);
@@ -45,7 +50,17 @@ export class DuelComponent implements OnInit {
     var riddleIdToAsk = this.getRandomOpponentRiddleId();
     var riddleToAsk = this.lookupRiddle(riddleIdToAsk);       
     this.opponentSay(riddleToAsk.question);
+    this.showAnswers();
     
+  }
+
+  showQuestions(): void {
+    this.options = this.riddles.map(function(r) { return r.question });
+  }
+
+  showAnswers(): void {
+    var that = this;
+    this.options = this.player.knownRiddles.map(function(r) { return that.lookupRiddle(r).answer });
   }
 
   opponentKnowsAnswer(riddleId): boolean {
