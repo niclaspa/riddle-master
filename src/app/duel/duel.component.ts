@@ -16,44 +16,66 @@ export class DuelComponent implements OnInit {
   @Input() player: Player;
 
   riddles: Riddle[];
-  currentRiddle: Riddle;
+  currentAskedRiddle: Riddle;
+  currentAnsweredRiddle: Riddle;
   playerMessage: string;
   opponentMessage: string;
   options: string[];
+  isPlayerTurnToAskQuestion: boolean;
 
   constructor(public riddleService: RiddleService) { }
 
   ngOnInit(): void {
     this.riddles = this.riddleService.getRiddles();
     this.opponentSay('Here\'s ' + this.opponent.name);
+
+    this.isPlayerTurnToAskQuestion = true;
     this.showQuestions();
   }
 
   async onClick(e) {
-    this.currentRiddle = this.riddles.find(r => r.question == e.target.innerHTML.trim()) ;
-    this.playerTurn();
-    await delay(2000);
-    this.opponentTurn();
+    var selectedOption = e.target.innerHTML.trim();
+    
+    if (this.isPlayerTurnToAskQuestion){
+      // the player has just clicked on a question
+      this.currentAskedRiddle = this.riddles.find(r => r.question == selectedOption);
+      this.playerAskQuestion();
+      this.opponentAnswer();
+      await delay(2000);
+      this.opponentAskQuestion();
+      this.showAnswers();
+      this.isPlayerTurnToAskQuestion = false;
+    } else {
+      // the player has just clicked on an answer
+      this.currentAnsweredRiddle = this.riddles.find(r => r.answer == selectedOption);
+      this.playerSay(this.currentAnsweredRiddle.answer);
+      if (this.currentAskedRiddle.id == this.currentAnsweredRiddle.id){
+        this.opponentSay('Correct!');
+      } else {
+        this.opponentSay('Wrong!');
+      }
+      await delay(2000);
+      this.showQuestions();
+      this.isPlayerTurnToAskQuestion = true;
+    }
   }
 
-  playerTurn(): void {
-    this.playerMessage = this.currentRiddle.question;
-    this.showQuestions();
-    
-    if (this.opponentKnowsAnswer(this.currentRiddle.id)) {
-      this.opponentSay(this.currentRiddle.answer);
+  playerAskQuestion(): void {
+    this.playerMessage = this.currentAskedRiddle.question;
+  }
+
+  opponentAnswer(): void {
+    if (this.opponentKnowsAnswer(this.currentAskedRiddle.id)) {
+      this.opponentSay(this.currentAskedRiddle.answer);
     } else {
       this.opponentSay('No eyed deer!')
     }
-    
   }
 
-  opponentTurn(): void {
+  opponentAskQuestion(): void {
     var riddleIdToAsk = this.getRandomOpponentRiddleId();
     var riddleToAsk = this.lookupRiddle(riddleIdToAsk);       
     this.opponentSay(riddleToAsk.question);
-    this.showAnswers();
-    
   }
 
   delay(ms: number) {
@@ -75,6 +97,10 @@ export class DuelComponent implements OnInit {
 
   opponentSay(text): void {
     this.opponentMessage = text;
+  }
+
+  playerSay(text): void {
+    this.playerMessage = text;
   }
 
   lookupRiddle(id): Riddle {
