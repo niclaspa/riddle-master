@@ -55,8 +55,8 @@ export class DuelComponent implements OnInit {
     } else {
       // the player has just clicked on an answer
       this.currentAnsweredRiddle = this.riddles.find(r => r.answer == selectedOption);
-      this.playerSay(this.currentAnsweredRiddle.answer);
-      if (this.currentAskedRiddle.id == this.currentAnsweredRiddle.id){
+      this.playerSay(selectedOption);
+      if (this.currentAnsweredRiddle && this.currentAskedRiddle.id == this.currentAnsweredRiddle.id){
         this.opponentSay('Correct!');
         this.opponentScore = this.opponentScore-1;
       } else {
@@ -102,6 +102,8 @@ export class DuelComponent implements OnInit {
   showAnswers(): void {
     var that = this;
     this.options = this.player.knownAnswers.map(function(r) { return that.lookupRiddle(r).answer });
+    this.options.push('No eyed deer!');
+    this.options.push('I haven\'t got a clue!');
   }
 
   opponentKnowsAnswer(riddleId): boolean {
