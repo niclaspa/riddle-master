@@ -3,6 +3,7 @@ import { RiddleService } from '../riddle.service';
 import { Riddle } from '../riddle';
 import { ComputerPlayer } from '../computer-player';
 import { Player } from '../player';
+import { delay } from 'q';
 
 @Component({
   selector: 'app-duel',
@@ -28,9 +29,10 @@ export class DuelComponent implements OnInit {
     this.showQuestions();
   }
 
-  onClick(e) {
+  async onClick(e) {
     this.currentRiddle = this.riddles.find(r => r.question == e.target.innerHTML.trim()) ;
     this.playerTurn();
+    await delay(2000);
     this.opponentTurn();
   }
 
@@ -52,6 +54,10 @@ export class DuelComponent implements OnInit {
     this.opponentSay(riddleToAsk.question);
     this.showAnswers();
     
+  }
+
+  delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
   }
 
   showQuestions(): void {
