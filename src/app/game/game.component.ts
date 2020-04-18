@@ -18,7 +18,7 @@ export class GameComponent implements OnInit {
   ];
 
   player: Player = {
-    knownRiddles:[2,3],
+    knownRiddles:[1,2,4],
     name: 'Peter'  
   };
 

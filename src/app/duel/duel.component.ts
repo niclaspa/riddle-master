@@ -22,12 +22,16 @@ export class DuelComponent implements OnInit {
   opponentMessage: string;
   options: string[];
   isPlayerTurnToAskQuestion: boolean;
+  playerScore: number;
+  opponentScore: number;
 
   constructor(public riddleService: RiddleService) { }
 
   ngOnInit(): void {
     this.riddles = this.riddleService.getRiddles();
     this.opponentSay('Here\'s ' + this.opponent.name);
+    this.playerScore = 3;
+    this.opponentScore = 3;
 
     this.isPlayerTurnToAskQuestion = true;
     this.showQuestions();
@@ -54,10 +58,13 @@ export class DuelComponent implements OnInit {
       this.playerSay(this.currentAnsweredRiddle.answer);
       if (this.currentAskedRiddle.id == this.currentAnsweredRiddle.id){
         this.opponentSay('Correct!');
+        this.opponentScore = this.opponentScore-1;
       } else {
         this.opponentSay('Wrong!');
+        this.playerScore = this.playerScore-1;
       }
       await delay(2000);
+      this.opponentSay('');
       this.showQuestions();
       this.isPlayerTurnToAskQuestion = true;
     }
@@ -70,9 +77,11 @@ export class DuelComponent implements OnInit {
   opponentAnswer(): void {
     if (this.opponentKnowsAnswer(this.currentAskedRiddle.id)) {
       this.opponentSay(this.currentAskedRiddle.answer);
+      this.playerScore = this.playerScore-1;
     } else {
-      this.opponentSay('No eyed deer!')
-    }
+      this.opponentSay('No eyed deer!');
+      this.opponentScore = this.opponentScore-1;
+    } 
   }
 
   opponentAskQuestion(): void {
