@@ -26,4 +26,29 @@ export const RIDDLES: Riddle[] = [
     question: 'What`s a dragons favourite plane?', 
     answer: 'The Spitfire' 
   },
+  { 
+    id: 6, 
+    question: 'What do you call a man who has not got all his fingers on one hand?', 
+    answer: 'Normal.You have two hands'  
+  },
+  { 
+    id: 7, 
+    question: 'Why do dragons sleep all day?', 
+    answer: 'They like to hunt knights'  
+  },
+  { 
+    id: 8, 
+    question: 'Why did the woman wear a helmet at the dinner table?', 
+    answer: 'Because of her crash diet'  
+  },
+  { 
+    id: 9, 
+    question: 'What did the beach say when the tide came in?', 
+    answer: 'Long time,no sea'  
+  },
+  { 
+    id: 10, 
+    question: 'What is the best thing to do when a bull charges you?', 
+    answer: 'Pay the bull'  
+  },
 ];

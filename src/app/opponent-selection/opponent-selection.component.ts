@@ -15,22 +15,22 @@ export class OpponentSelectionComponent implements OnInit {
   computerPlayers: ComputerPlayer[] = [
     { 
       id: 1, 
-      knownRiddles:[1,3,5],
+      knownRiddles:[1,3,5,8,7,9],
       name: 'Johnny' 
     },
     { 
       id: 2, 
-      knownRiddles:[1,2,5],
+      knownRiddles:[1,2,6,9,10],
       name: 'Tony' 
     },
     { 
       id: 3, 
-      knownRiddles:[1,2,4,5],
+      knownRiddles:[2,4,5,6,8,10],
       name: 'Tim' 
     },
     { 
       id: 4, 
-      knownRiddles:[2,3,4,5],
+      knownRiddles:[2,3,4,5,7,6],
       name: 'Jim' 
     }
   ];
