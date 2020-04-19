@@ -69,6 +69,7 @@ export class DuelComponent implements OnInit {
       this.showQuestions();
       this.isPlayerTurnToAskQuestion = true;
     }
+    this.checkDuelEnd();
   }
 
   playerAskQuestion(): void {
@@ -88,6 +89,12 @@ export class DuelComponent implements OnInit {
       this.opponentSay('No eyed deer!');
       this.opponentScore = this.opponentScore-1;
     } 
+  }
+
+  checkDuelEnd(): void {
+    if (this.playerScore == 0 || this.opponentScore == 0) {
+      this.state.isDuelRunning = false;  
+    }
   }
 
   opponentAskQuestion(): void {
