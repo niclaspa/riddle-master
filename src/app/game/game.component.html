@@ -1,5 +1,13 @@
-<app-duel 
-    [opponent] = "currentOpponent"
-    [player] = "player"
+<div *ngIf="state.isDuelRunning">
+    <app-duel 
+        [state] = "state"
+        [player] = "player"
     >     
-</app-duel>
+    </app-duel>
+</div>
+<div *ngIf="!state.isDuelRunning">
+    <app-opponent-selection
+        [state] = "state"
+    >
+    </app-opponent-selection>
+</div>

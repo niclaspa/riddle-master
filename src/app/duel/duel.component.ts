@@ -4,6 +4,7 @@ import { Riddle } from '../riddle';
 import { ComputerPlayer } from '../computer-player';
 import { Player } from '../player';
 import { delay } from 'q';
+import { GameState } from '../game-state';
 
 @Component({
   selector: 'app-duel',
@@ -12,7 +13,7 @@ import { delay } from 'q';
 })
 export class DuelComponent implements OnInit {
 
-  @Input() opponent: ComputerPlayer;
+  @Input() state: GameState;
   @Input() player: Player;
 
   riddles: Riddle[];
@@ -29,7 +30,7 @@ export class DuelComponent implements OnInit {
 
   ngOnInit(): void {
     this.riddles = this.riddleService.getRiddles();
-    this.opponentSay('Here\'s ' + this.opponent.name);
+    this.opponentSay('Here\'s ' + this.state.currentOpponent.name);
     this.playerScore = 3;
     this.opponentScore = 3;
 
@@ -118,7 +119,7 @@ export class DuelComponent implements OnInit {
   }
 
   opponentKnowsAnswer(riddleId): boolean {
-    return this.opponent.knownRiddles.includes(riddleId);
+    return this.state.currentOpponent.knownRiddles.includes(riddleId);
   }
 
   opponentSay(text): void {
@@ -135,6 +136,6 @@ export class DuelComponent implements OnInit {
 
   getRandomOpponentRiddleId(): number {
     var r = Math.floor((Math.random() * 3));
-    return this.opponent.knownRiddles[r];
+    return this.state.currentOpponent.knownRiddles[r];
   }
 }

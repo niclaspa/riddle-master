@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { AboutComponent } from './about/about.component';
 import { GameComponent } from './game/game.component';
 import { DuelComponent } from './duel/duel.component';
+import { OpponentSelectionComponent } from './opponent-selection/opponent-selection.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AboutComponent,
     GameComponent,
-    DuelComponent
+    DuelComponent,
+    OpponentSelectionComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,10 @@
+<div>
+    <h3>Select an opponent:</h3>
+    <div>
+        <ul (click)="onOpponentSelected($event)">
+            <li *ngFor="let opponent of computerPlayers">
+                {{opponent.name}}
+            </li>
+        </ul>
+    </div>
+</div>

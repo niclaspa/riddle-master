@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ComputerPlayer } from '../computer-player';
 import { Player } from '../player';
+import { GameState } from '../game-state';
 
 @Component({
   selector: 'app-game',
@@ -9,27 +10,21 @@ import { Player } from '../player';
 })
 export class GameComponent implements OnInit {
 
-  computerPlayers: ComputerPlayer[] = [
-    { 
-      id: 1, 
-      knownRiddles:[1,3,5],
-      name: 'Johnny' 
-    }
-  ];
-
   player: Player = {
     knownAnswers:[],
     knownQuestions:[1],
     name: 'Peter'  
   };
 
-  currentOpponent: ComputerPlayer;
+  state: GameState;
 
   constructor() {
-    this.currentOpponent = this.computerPlayers[0];
+    this.state = { 
+      isDuelRunning: false, 
+      currentOpponent: null
+    };
   }
 
   ngOnInit(): void {
   }
-
 }
