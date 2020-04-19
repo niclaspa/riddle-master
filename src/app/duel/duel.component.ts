@@ -78,6 +78,11 @@ export class DuelComponent implements OnInit {
     if (this.opponentKnowsAnswer(this.currentAskedRiddle.id)) {
       this.opponentSay(this.currentAskedRiddle.answer);
       this.playerScore = this.playerScore-1;
+
+      // learn the answer if we don't know it already
+      if (!this.player.knownAnswers.includes(this.currentAskedRiddle.id)){
+        this.player.knownAnswers.push(this.currentAskedRiddle.id);
+      }
     } else {
       this.opponentSay('No eyed deer!');
       this.opponentScore = this.opponentScore-1;
@@ -89,6 +94,11 @@ export class DuelComponent implements OnInit {
     var riddleToAsk = this.lookupRiddle(riddleIdToAsk);       
     this.opponentSay(riddleToAsk.question);
     this.currentAskedRiddle = riddleToAsk;
+
+    // learn the question if we don't know it already
+    if (!this.player.knownQuestions.includes(riddleIdToAsk)) {
+      this.player.knownQuestions.push(riddleIdToAsk);
+    }
   }
 
   delay(ms: number) {
