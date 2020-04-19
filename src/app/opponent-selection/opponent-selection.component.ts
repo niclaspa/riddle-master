@@ -17,6 +17,21 @@ export class OpponentSelectionComponent implements OnInit {
       id: 1, 
       knownRiddles:[1,3,5],
       name: 'Johnny' 
+    },
+    { 
+      id: 2, 
+      knownRiddles:[1,2,5],
+      name: 'Tony' 
+    },
+    { 
+      id: 3, 
+      knownRiddles:[1,2,4,5],
+      name: 'Tim' 
+    },
+    { 
+      id: 4, 
+      knownRiddles:[2,3,4,5],
+      name: 'Jim' 
     }
   ];
 
