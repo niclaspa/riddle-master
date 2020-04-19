@@ -151,7 +151,7 @@ export class DuelComponent implements OnInit {
   }
 
   getRandomOpponentRiddleId(): number {
-    var r = Math.floor((Math.random() * 3));
+    var r = Math.floor(Math.random() * this.state.currentOpponent.knownRiddles.length);
     return this.state.currentOpponent.knownRiddles[r];
   }
 }
