@@ -69,7 +69,8 @@ export class DuelComponent implements OnInit {
       this.showQuestions();
       this.isPlayerTurnToAskQuestion = true;
     }
-    this.checkDuelEnd();
+
+    await this.checkDuelEnd();
   }
 
   playerAskQuestion(): void {
@@ -91,9 +92,17 @@ export class DuelComponent implements OnInit {
     } 
   }
 
-  checkDuelEnd(): void {
+  async checkDuelEnd(): Promise<void> {
     if (this.playerScore == 0 || this.opponentScore == 0) {
-      this.state.isDuelRunning = false;  
+      if(this.playerScore == 0) {
+        this.opponentSay('I win! Now scurry away!');
+      }
+      if(this.opponentScore == 0) {
+        this.opponentSay('Arrrgh I\'ll get you next time!'); 
+      } 
+
+      await delay(5000)
+      this.state.isDuelRunning = false;
     }
   }
 
