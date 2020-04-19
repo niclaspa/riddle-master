@@ -96,7 +96,8 @@ export class DuelComponent implements OnInit {
   }
 
   showQuestions(): void {
-    this.options = this.riddles.map(function(r) { return r.question });
+    var that = this;
+    this.options = this.player.knownQuestions.map(function(r) { return that.lookupRiddle(r).question });
   }
 
   showAnswers(): void {
