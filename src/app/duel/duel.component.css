@@ -16,6 +16,15 @@
 ul {
     list-style-type: none;
     text-align: left;
+    font-size: large;
+}
+
+li {
+    cursor: pointer;
+}
+
+li:hover {
+    color: blue;
 }
 
 .questions {

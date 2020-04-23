@@ -105,7 +105,7 @@ export class DuelComponent implements OnInit {
         this.opponentSay('Arrrgh I\'ll get you next time!'); 
       } 
 
-      await delay(5000)
+      await delay(4000)
       this.state.isDuelRunning = false;
     }
   }
